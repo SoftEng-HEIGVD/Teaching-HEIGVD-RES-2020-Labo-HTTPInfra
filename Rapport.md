@@ -31,6 +31,6 @@ docker run -d -p <PORT>:80 <IMG_NAME>
 ```
 
 Dans le cas ou mon port est 7778 et mon localhost 192.168.99.101
-![](Images/FinalStep1.jpg)
+![](Images/FinalStep1.png)
 
 ## Partie 2 : Serveur HTTP dynamique avec express.js
