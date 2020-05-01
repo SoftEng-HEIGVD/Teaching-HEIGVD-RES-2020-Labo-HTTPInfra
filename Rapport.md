@@ -4,13 +4,13 @@
 
 Image Docker utilisée : php:7.2.30-apache - https://hub.docker.com/layers/php/library/php/7.2.30-apache/images/sha256-8b1a97fafd2ebf432658b4fdbaadd0d0531d1c55550d3ae9b8d77896697acb17?context=explore
 
-Adresse IP de docker toolbox :\
+Adresse IP de docker toolbox\
 ![](Images/AdrrIPToolbox.png)
 
-Premier lancement du serveur apache :
+Premier lancement du serveur apache
 ![](Images/PremierLancementServeurApache.png)
 
-Première Connexion, Serveur vide :\
+Première Connexion, Serveur vide\
 ![](Images/PremiereConnexion.png)
 
 
@@ -31,6 +31,6 @@ docker run -d -p <PORT>:80 <IMG_NAME>
 ```
 
 Dans le cas ou mon port est 7778 et mon localhost 192.168.99.101
-![](Images/FinalStep1.png)
+![](Images/finalStep1.png)
 
 ## Partie 2 : Serveur HTTP dynamique avec express.js
