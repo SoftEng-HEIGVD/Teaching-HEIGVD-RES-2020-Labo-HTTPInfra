@@ -1,5 +1,7 @@
 # Laurent Thoeny - Res 2020 - Rapport
 
+Pas de .gitignore à expliquer
+
 ### Step 1
 
 // todo : peut-être quelques commentaires
