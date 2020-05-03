@@ -10,3 +10,8 @@ Rien de très différent de la vidéo n'a été fait mis à part le choix du tem
 docker build -t res/apache_php .
 docker run -p 9090:80 -d --name landingPage res/apache_php
 ```
+
+### Step 2
+
+Ici il est important de préciser que j'ai créé la branche depuis master car j'ai merge ma première branche sur Master entre temps. En espérant que cette différence de workflow ne dérange pas.
+
