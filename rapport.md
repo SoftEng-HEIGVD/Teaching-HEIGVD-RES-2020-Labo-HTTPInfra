@@ -44,3 +44,9 @@ function getRandomAnimals()
 
 
 ### Step 3
+
+J'avais déjà nommé des containers "" et "" alors je les ai redemarrés des étapes précédentes, j'ai cependant recréé celui de l'étape 1 afin de supprimer le port-mapping
+
+Il est logique que la configuration statique soit fragile puisqu'on doit hardcoder des adresses dynamiques, et plus ce ne serait pas réalistes si on avait un nombre plus important de serveurs (ce qui est vrai dans la pratique).
+
+
