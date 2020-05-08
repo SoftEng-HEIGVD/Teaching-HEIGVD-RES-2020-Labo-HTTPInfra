@@ -35,6 +35,8 @@ Dans le cas ou mon port est 7778 et mon localhost 192.168.99.101
 
 ## Partie 2 : Serveur HTTP dynamique avec express.js
 
+### 2.1 : Configuration de Node.js
+
 Image Docker utilisée : `node:12.16.3`
 
 DockerFile
@@ -44,8 +46,8 @@ COPY src /opt/app
 CMD ["node","/opt/app/index.js"]
 ```
 
-fichier package.json :
-```
+fichier package.json, crée grâce à l'utilitaire `npm` de node
+```json
 {
   "name": "tryingtomakethiswork",
   "version": "1.0.0",
@@ -55,6 +57,25 @@ fichier package.json :
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Simon Mattei",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chance": "^1.1.4"
+  }
 }
 ```
+
+index.js
+```javascript
+var Chance = require('chance');
+var chance = new Chance();
+
+console.log("Gnar's birthday is on " + chance.birthday())
+```
+
+Arborescence des fichiers
+
+![](Images/ArborescenceNode.png)
+
+Exécution de l'image
+
+![](Images/ExecutionNode.png)
