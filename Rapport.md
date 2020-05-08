@@ -132,9 +132,9 @@ Après les commandes `ducker build` et `docker run`, on a doc un serveur qui tou
 
 Configuration de l'environnement docker-toolbox
 
-![](Images/postman_config.png)
+![](Images/postmanConfig.png)
 
 Requête `GET` à notre serveur
 
-![](Images/postman_get.png)
+![](Images/postmanGet.png)
 
