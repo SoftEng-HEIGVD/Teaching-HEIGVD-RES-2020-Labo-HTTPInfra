@@ -82,7 +82,27 @@ Exécution de l'image
 
 ### 2.2 : Configuration du framework Express.js
 
-index.js
+Fichier package.json, cette fois avec les dépendances sur Express, et sur animals qui va nous permettre de générer des animaux aléatoires
+```json
+{
+  "name": "tryingtomakethiswork",
+  "version": "1.0.0",
+  "description": "part 2 for my lab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simon Mattei",
+  "license": "ISC",
+  "dependencies": {
+    "animals": "0.0.3",
+    "chance": "^1.1.4",
+    "express": "^4.17.1"
+  }
+}
+```
+
+Cette fois si, une requête GET sur notre serveur leur enverra les 3 "LuckyAnimals" de la requête!
 ```javascript
 var animals = require('animals');
 
@@ -108,3 +128,13 @@ function generateLuckyAnimals() {
     return luckyAnimals;
 }
 ```
+Après les commandes `ducker build` et `docker run`, on a doc un serveur qui tourne en port-mapping sur ``192.168.99.101:9090``, qui va écouter sur le port 3000 de notre container docker. On peut ensuite tester notre serveur en lui envoyant des requêtes `GET` pour voir si on reçoit bien nos animaux :)
+
+Configuration de l'environnement docker-toolbox
+
+![](Images/postman_config.png)
+
+Requête `GET` à notre serveur
+
+![](Images/postman_get.png)
+
