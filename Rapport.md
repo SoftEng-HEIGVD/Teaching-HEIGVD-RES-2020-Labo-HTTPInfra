@@ -130,11 +130,13 @@ function generateLuckyAnimals() {
 ```
 Après les commandes `ducker build` et `docker run`, on a doc un serveur qui tourne en port-mapping sur ``192.168.99.101:9090``, qui va écouter sur le port 3000 de notre container docker. On peut ensuite tester notre serveur en lui envoyant des requêtes `GET` pour voir si on reçoit bien nos animaux :)
 
-Configuration de l'environnement docker-toolbox
+Configuration de l'environnement docker-toolbox sur postman
 
 ![](Images/postmanConfig.png)
 
 Requête `GET` à notre serveur
 
 ![](Images/postmanGet.png)
+
+## Partie 3 : Reverse proxy avec apache
 
