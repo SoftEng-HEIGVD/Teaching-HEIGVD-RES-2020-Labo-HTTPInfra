@@ -140,3 +140,39 @@ Requête `GET` à notre serveur
 
 ## Partie 3 : Reverse proxy avec apache
 
+Dans le fichier `/etc/apache2`, on y retrouver plusieurs scripts intéressants pour la configuration d'un serveur proxy:
+- a2enmnod : Permet d'activer des modules, notamment pour la configuration d'un serveur proxy
+- a2ensite : Permet d'activer des sites différents
+
+Ceci permet d'héberger plusieurs sites logiques sur la même infrastructure. Dans notre cas, le reverse proxy sera un site! Pour ceci, on doit configurer notre fichier `001-reverse-proxy.conf` qui va définir quelle entête `host` on doit indiquer dans notre requête HTTP pour accéder au site choisi.
+
+Pour configurer notre fichier, il faut savoir quelles adresses IPs leurs ont été attribuées. De manière générale, il faut configurer ces adresses de manière dynamique. Ici, de manière a comprendre, nous allons les configurer de manière statique.
+
+![](Images/adressesIPs.png)
+
+La configuration est la suivante :
+```
+ServerName gnar.ch
+
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+ProxyPass "/api/gnar/" "http://172.17.0.3:3000/"
+ProxyPassReverse "/api/gnar/" "http://172.17.0.3:3000/"
+
+ProxyPass "/" "http://172.17.0.2:80/"
+ProxyPassReverse "/" "http://172.17.0.2:80/"
+```
+
+Il est important que la configuration plus générale soit en dernier. Il faut ensuite enable notre configuration dans le dossier `/etc/apache2/sites-enabled`, grâce au script `a2ensite 001*`. Il faut également activer les modules nécessaire à l'activation du serveur reverse proxy grâce à `a2enmod proxy` et `a2enmod proxy_http`. Pour finir, `service apache2 reload` permet de charger notre configuration.
+
+Dockerfile
+
+```
+FROM php:7.2.30-apache
+
+COPY conf/ /etc/apache2
+
+RUN a2enmod proxy proxy_http
+RUN a2ensite 000-* 001-*
+```
