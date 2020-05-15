@@ -51,7 +51,7 @@ Il est logique que la configuration statique soit fragile puisqu'on doit hardcod
 
 
 
-### Step 4
+### Step 4 - Ajax & jQuery
 
 _Comme pour les étapes précédentes, je ne documente pas tous les détails mais principalement les grosses étapes et/ou différences avec les vidéos._
 
@@ -114,4 +114,16 @@ $(function()
 J'ai mis un timing plus haut pour le rafraîchissement vu qu'on charge une liste et que sinon on avait pas le temps de la lire :c
 
  
+
+### Step 5 - Dynamic Reverse Proxy
+
+_Comme pour les étapes précédentes, je ne documente pas tous les détails mais principalement les grosses étapes et/ou différences avec les vidéos._
+
+Tout d'abord j'ai supprimé mes containers existants pour nettoyer un peu.
+
+```bash
+docker rm `docker ps -qa`
+```
+
+
 

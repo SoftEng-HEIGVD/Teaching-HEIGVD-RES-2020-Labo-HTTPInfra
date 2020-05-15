@@ -12,7 +12,7 @@ $(function()
             {
                 message = message.concat (' ', animals[i].animal);
             });
-
+            
             $("#myAnimals").text(message);
         })
     }
