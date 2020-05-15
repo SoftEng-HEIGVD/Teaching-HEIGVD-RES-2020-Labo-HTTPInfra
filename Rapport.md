@@ -182,16 +182,17 @@ Après configuration du fichier Host de windows, ainsi que tu lancement du conta
 
 ## Partie 4 : Requêtes AJAX avec JQuery
 
-
+Tout d'abord, il a fallu attribué un ID au texte affecté par le script, de manière à l'appeler grâce à `#X` dans notre script
 ```
 <h2 id="gnar">It's cool to manipulate html f the first time actually</h2>
 ```
+Ensuite, il faut faire appel au script dans le footer d'`index.html`
 
 ```js
   <!-- My own script -->
   <script src="assets/js/gnar.js"></script>
 ```
-
+Pour finir, voici notre script. Toutes les deux secondes, une requête HTML asynchrone sera envoyée à notre API pour récupérer 3 animaux chanceux. Ils seront ensuite affichés sur notre page web
 ```js
 $(function(){
         console.log("Loading animals");
@@ -211,3 +212,7 @@ $(function(){
         setInterval(loadAnimals, 2000);
 });
 ```
+
+![](Images/animals.png)
+
+## Partie 5 : Je sais pas encore
