@@ -175,3 +175,10 @@ COPY conf/ /etc/apache2
 RUN a2enmod proxy proxy_http
 RUN a2ensite 000-* 001-*
 ```
+
+Après configuration du fichier Host de windows, ainsi que tu lancement du container, il est désormais possible de se connecter à mon reverse proxy depuis un browser web
+
+![](Images/connectionProxyWeb.png)
+
+## Partie 4 : Requêtes AJAX avec JQuery
+
