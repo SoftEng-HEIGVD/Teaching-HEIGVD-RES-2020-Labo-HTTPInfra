@@ -152,16 +152,15 @@ Pour configurer notre fichier, il faut savoir quelles adresses IPs leurs ont ét
 
 La configuration est la suivante :
 ```
-ServerName gnar.ch
+<VirtualHost *:80>
+	ServerName gnar.ch
 
-ErrorLog ${APACHE_LOG_DIR}/error.log
-CustomLog ${APACHE_LOG_DIR}/access.log combined
+	ProxyPass "/api/gnar/" "http://172.17.0.3:3000/"
+	ProxyPassReverse "/api/gnar/" "http://172.17.0.3:3000/"
 
-ProxyPass "/api/gnar/" "http://172.17.0.3:3000/"
-ProxyPassReverse "/api/gnar/" "http://172.17.0.3:3000/"
-
-ProxyPass "/" "http://172.17.0.2:80/"
-ProxyPassReverse "/" "http://172.17.0.2:80/"
+	ProxyPass "/" "http://172.17.0.2:80/"
+	ProxyPassReverse "/" "http://172.17.0.2:80/" 
+</VirtualHost>
 ```
 
 Il est important que la configuration plus générale soit en dernier. Il faut ensuite enable notre configuration dans le dossier `/etc/apache2/sites-enabled`, grâce au script `a2ensite 001*`. Il faut également activer les modules nécessaire à l'activation du serveur reverse proxy grâce à `a2enmod proxy` et `a2enmod proxy_http`. Pour finir, `service apache2 reload` permet de charger notre configuration.
