@@ -217,3 +217,53 @@ $(function(){
 
 ## Partie 5 : Reverse proxy dynamique
 
+Pour le dockerfile, il a fallu copier notre configuration depuis le dossier template qui a notre script php pour la configuration des adresses dynamiques passées en paramètre via variables d'environnement pour docker. Ensuite de cela, on appel notre script "setup.sh" qui va se charger d'exécuter notre template ainsi que d'appeler correctement `apache2-foreground` qui démarre le serveur.
+
+Dockerfile
+```
+FROM php:7.2.30-apache
+
+RUN apt-get update && \
+	apt-get install -y vim
+
+COPY setup.sh /usr/local/bin/
+COPY template /var/apache2/
+COPY conf/ /etc/apache2
+
+RUN a2enmod proxy proxy_http
+RUN a2ensite 000-* 001-*
+
+CMD ["setup.sh"]
+```
+
+`setup.sh`
+```
+echo "Setting up RES lab..."
+echo "Static app URL: $STATIC_APP"
+echo "Dynamic app URL: $DYNAMIC_APP"
+
+php /var/apache2/config-template.php > /etc/apache2/sites-available/001-reverse-proxy.conf
+
+exec apache2-foreground
+```
+
+config-template.php
+```php
+<?php
+    $static_app = getenv('STATIC_APP');
+	$dynamic_app = getenv('DYNAMIC_APP');
+?>
+
+<VirtualHost *:80>
+	ServerName gnar.ch
+
+	ProxyPass '/api/gnar/' 'http://<?php print "$dynamic_app"?>/'
+	ProxyPassReverse '/api/gnar/' 'http://<?php print "$dynamic_app"?>/'
+
+	ProxyPass '/' 'http://<?php print "$static_app"?>/'
+	ProxyPassReverse '/' 'http://<?php print "$static_app"?>/'
+</VirtualHost>
+```
+
+Après lancement du container, in peut observer les adresses dynamiques associées ainsi que le serveur qui tourne sur les requêtes GET
+![](Images/Lancementfinal.png)
