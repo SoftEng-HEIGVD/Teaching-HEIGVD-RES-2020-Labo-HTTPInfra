@@ -1,0 +1,14 @@
+{
+  "name": "heig-res-labo-httpinfra-express",
+  "version": "0.1.0",
+  "description": "Step 2 of the res http infra lab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthieu Burguburu",
+  "license": "ISC",
+  "dependencies": {
+    "chance": "^1.1.6"
+  }
+}
