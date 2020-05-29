@@ -14,7 +14,7 @@ app.listen(3000, function() {
 
 function generateAnimals() {	
 	const types = ["ocean", "desert", "grassland", "forest", "farm", "zoo"];
-	const animals = types.map(t => "The " + chance.animal({type: t}) + " belongs to the " + t);
+	const animals = types.map(t => "The " + chance.animal({type: t}) + " lives in " + t);
 
 	console.log(animals);
 	
