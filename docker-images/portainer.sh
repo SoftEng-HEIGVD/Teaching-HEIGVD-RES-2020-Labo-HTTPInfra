@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# On bruteforce un stop si nécessaire
-docker stop portainer
-
-# On efface l'actuel container à ce nom
-docker rm portainer
-
 # On lance le container avec les bons labels et tout :)
 docker run -d --name=portainer \
 	--label "traefik.http.routers.portainer.rule"="Host(\`admin.res.ch\`)" \

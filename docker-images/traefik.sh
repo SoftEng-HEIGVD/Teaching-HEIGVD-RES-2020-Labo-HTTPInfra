@@ -1,9 +1,5 @@
 #!/bin/bash
 
-docker stop traefik
-
-docker rm traefik
-
 docker run -d -p 8080:8080 -p 80:80 --name traefik \
         --label "traefik.http.routers.traefik.rule"="Host(\`config.res.ch\`)" \
         --label "traefik.http.services.traefik.loadbalancer.server.port"="8080" \

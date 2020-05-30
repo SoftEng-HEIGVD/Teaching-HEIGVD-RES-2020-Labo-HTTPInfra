@@ -138,8 +138,6 @@ Pour les étapes 3 à 5, mes modifications ne sont pas différentes de celles pr
 
 
 
-
-
 ### Management UI
 
 Pour la management UI, je connaissais [Portainer](https://www.portainer.io/) et j'ai donc décidé de l'implémenter sur mon système, principalement car j'apprécie l'idée d'avoir un système de gestion qui lui-même est un container.
@@ -167,7 +165,7 @@ _Traefik_ tire profit de labels ajoutés aux containers pour activer des service
 
 
 
-
+don't forget .htaccess lel
 
 
 

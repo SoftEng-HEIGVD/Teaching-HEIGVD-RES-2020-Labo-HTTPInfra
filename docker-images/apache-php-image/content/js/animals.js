@@ -4,7 +4,7 @@ $(function()
 
     function loadAnimals()
     {
-        $.getJSON("/api/animals/", function (animals)
+        $.getJSON("http://api.res.ch/animals", function (animals)
         {
             var message = "Liste des animaux :";
 
