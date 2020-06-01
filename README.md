@@ -1,5 +1,8 @@
 # Teaching-HEIGVD-RES-2020-Labo-HTTPInfra
 
+## Lab report
+The lab report (written in french) is available in the wiki section of this repo.
+
 ## Objectives
 
 The first objective of this lab is to get familiar with software tools that will allow us to build a **complete web infrastructure**. By that, we mean that we will build an environment that will allow us to serve **static and dynamic content** to web browsers. To do that, we will see that the **apache httpd server** can act both as a **HTTP server** and as a **reverse proxy**. We will also see that **express.js** is a JavaScript framework that makes it very easy to write dynamic web apps.
