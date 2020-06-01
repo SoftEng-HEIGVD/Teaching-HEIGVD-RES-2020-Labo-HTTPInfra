@@ -16,10 +16,11 @@
     ProxySet lbmethod=byrequests
 	</Proxy>
 	
+	Header add Set-Cookie "ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/" env=BALANCER_ROUTE_CHANGED
 	<Proxy 'balancer://static'>
-	BalancerMember 'http://<?php print "$static_app1"?>/'
-	BalancerMember 'http://<?php print "$static_app2"?>/'
-    ProxySet lbmethod=byrequests
+	BalancerMember 'http://<?php print "$static_app1"?>/' route=1
+	BalancerMember 'http://<?php print "$static_app2"?>/' route=2
+    ProxySet stickysession=ROUTEID
 	</Proxy>
 	
 	ProxyPass '/api/animals/' 'balancer://dynamic/'
